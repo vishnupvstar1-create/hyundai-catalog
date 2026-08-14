@@ -136,7 +136,9 @@ app.delete('/api/admin/inventory/:id', (req, res) => {
   inventoryData = inventoryData.filter(item => item.id !== id);
   res.json({ message: "Item deleted" });
 });
-// Start the server
+// This tells it to use Render's port, or 5000 if you are testing on your computer
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  console.log(`🚀 API Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
