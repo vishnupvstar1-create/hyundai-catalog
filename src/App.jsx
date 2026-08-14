@@ -153,7 +153,7 @@ function ContactPage() {
     setStatus({ loading: true, success: null, error: null });
 
     try {
-      const response = await fetch('http://localhost:5000/api/inquiries', {
+      const response = await fetch('https://hyundai-catalog-2.onrender.com/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -330,7 +330,7 @@ function VehicleCatalog({ setPage, onSelectVehicle }) {
   const [currentVehicles, setCurrentVehicles] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/vehicles')
+    fetch('https://hyundai-catalog-2.onrender.com/api/vehicles')
       .then(response => {
         if (!response.ok) throw new Error('API failed');
         return response.json();
@@ -358,7 +358,7 @@ function VehicleCatalog({ setPage, onSelectVehicle }) {
   useEffect(() => {
     if (!currentTab) return;
 
-    fetch(`http://localhost:5000/api/vehicles/category/${currentTab}`)
+    fetch(`https://hyundai-catalog-2.onrender.com/api/vehicles/category/${currentTab}`)
       .then(response => {
         if (!response.ok) throw new Error('API failed');
         return response.json();
@@ -514,7 +514,7 @@ function AdminPage() {
   // READ (GET)
   const fetchInventory = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/admin/inventory');
+      const res = await fetch('https://hyundai-catalog-2.onrender.com/api/admin/inventory');
       const data = await res.json();
       setInventory(data);
     } catch (err) {
@@ -536,8 +536,8 @@ function AdminPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isEditing 
-      ? `http://localhost:5000/api/admin/inventory/${formData.id}`
-      : 'http://localhost:5000/api/admin/inventory';
+      ? `https://hyundai-catalog-2.onrender.com/api/admin/inventory/${formData.id}`
+      : 'https://hyundai-catalog-2.onrender.com/api/admin/inventory';
       
     const method = isEditing ? 'PUT' : 'POST';
 
@@ -578,7 +578,7 @@ function AdminPage() {
     if (!deleteModal.idToDelete) return;
     
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/inventory/${deleteModal.idToDelete}`, {
+      const response = await fetch(`https://hyundai-catalog-2.onrender.com/api/admin/inventory/${deleteModal.idToDelete}`, {
         method: 'DELETE'
       });
 
