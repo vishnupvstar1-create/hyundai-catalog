@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import vehicleData from './data.json';
+console.log("IMPORTED DATA:", vehicleData);
 
 // --- 1. HOME PAGE COMPONENT ---
 function HomePage({ setPage }) {
@@ -343,7 +345,7 @@ function VehicleCatalog({ setPage, onSelectVehicle }) {
         }
       })
       .catch(error => {
-        fetch('/data.json')
+        fetch(`/data.json?v=${new Date().getTime()}`)
           .then(res => res.json())
           .then(data => {
             const extractedCategories = Object.keys(data);
@@ -365,7 +367,7 @@ function VehicleCatalog({ setPage, onSelectVehicle }) {
       })
       .then(data => setCurrentVehicles(data))
       .catch(() => {
-        fetch('/data.json')
+        fetch(`/data.json?v=${new Date().getTime()}`)
           .then(res => res.json())
           .then(data => setCurrentVehicles(data[currentTab] || []));
       });
