@@ -18,7 +18,7 @@ app.use(express.json()); // Allows us to read JSON data from frontend
 // Helper function to read the data.json file from the public folder
 const getData = () => {
   // Points to C:\Users\dlaks01\hyundai-catalog\public\data.json
-const filePath = path.join(__dirname, 'src', 'data.json');
+const filePath = path.join(__dirname, 'public', 'data.json');
   const rawData = fs.readFileSync(filePath);
   return JSON.parse(rawData);
 };

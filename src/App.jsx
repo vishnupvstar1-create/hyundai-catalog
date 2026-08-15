@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import vehicleData from './data.json';
-console.log("IMPORTED DATA:", vehicleData);
+
 
 // --- 1. HOME PAGE COMPONENT ---
 function HomePage({ setPage }) {
